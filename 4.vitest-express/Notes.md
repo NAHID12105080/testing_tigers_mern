@@ -1,15 +1,22 @@
-# espress-pupil Testing
+# vitest-express testing
 
-- just copy the Newbie folder
-- now rename it to `express-pupil` then run following in the terminal
+> copy `3.express-zod` and rename it to `4.vitest-express`
+
+- cd to 4.vitest-express folder
+- now run
 
 ```bash
-npm i express @types/express supertest @types/supertest
+npm i vitest
 ```
 
-- create `src/index.ts` write express logic to it and seperate out the app.listen() logic to a new file to avoid port conflict error
-- `bin.ts` write the app.listen() logic here
+> update the package.json
 
-## add `tests(index.test.ts)`
+```json
+"scripts":{
+    "test":"vitest",
+}
+```
 
-- the request from supertest used to simulate performing http server request
+> now run `npm run test`
+
+- everything will work fine as the previous
