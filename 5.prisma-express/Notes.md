@@ -25,3 +25,53 @@ npx prisma init
 ```bash
 npx prisma generate
 ```
+
+# Mocking dependencies
+
+- wehn writing unit tests, u mock out all external service calls.
+- This means you test the core of your logic and assume the database calls would succeed.
+- this is done so tests can run without starting a database/external services
+
+# Mocking
+
+-Mocking the behavious of a file/class/variable when tests are running
+
+### creating a mock
+
+-
+
+### Deep mocking
+
+- Another way to mock variables is to let `vitest` figure out the types and mock out all the attributes of the object being mocked
+
+- for example, the `prismaClient` object has a lot of functions-
+
+```bash
+console.log(Object.keys(primaryClient))
+```
+
+## Deep mocking in vitest
+
+- install vitest-mock-extended
+
+```bash
+npm i -D vitest-mock-extended
+```
+
+- create `__mocks__/db.ts`
+
+```javascript
+import {PrismaClient} from '@prisma/client'
+import {beforeEach} from 'vitest'
+import {mockDeep,mockReset} from 'vitest-mock-extended'
+
+export const prismaClient= mockDeep<PrismaClient>()
+```
+
+- Remove the mock we added in `index.test.ts` , simply add a `vi.mock("../db")`;
+
+- run the tests
+
+```bash
+npm run test
+```
