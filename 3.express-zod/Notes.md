@@ -1,15 +1,18 @@
-# espress-pupil Testing
+# espress-zod Testing
 
-- just copy the Newbie folder
-- now rename it to `express-pupil` then run following in the terminal
+- just copy the `espress-pupil` folder. IN the root use this command
 
 ```bash
-npm i express @types/express supertest @types/supertest
+cp -r 2.express-pupil 3.express-zod
 ```
 
-- create `src/index.ts` write express logic to it and seperate out the app.listen() logic to a new file to avoid port conflict error
-- `bin.ts` write the app.listen() logic here
+> -r to recursively copy the contents from the folders
 
-## add `tests(index.test.ts)`
+- now rename it to `3.express-zod` then run following in the terminal
 
-- the request from supertest used to simulate performing http server request
+```bash
+npm i zod
+```
+
+- update index.ts
+- update `tests(index.test.ts)`
