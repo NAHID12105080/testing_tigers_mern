@@ -1,5 +1,4 @@
 import express from "express";
-import { z } from "zod";
 import { prismaClient } from "./db";
 
 const app = express();
@@ -21,6 +20,21 @@ app.post("/sum", (req: any, res: any) => {
       b: b,
       answer: result,
       type: "Sum",
+    },
+  });
+  res.json({ answer: result });
+});
+
+app.post("/multiply", (req: any, res: any) => {
+  const a = req.body.a;
+  const b = req.body.b;
+  const result = a * b;
+  prismaClient.request.create({
+    data: {
+      a: a,
+      b: b,
+      answer: result,
+      type: "Multiply",
     },
   });
   res.json({ answer: result });

@@ -15,7 +15,7 @@ import { prismaClient } from "../db";
 //     },
 //   };
 // });
-
+//sepearate out the logic to new __mock__ folder
 vi.mock("../db");
 
 describe("Tests the sum function", () => {
@@ -37,5 +37,17 @@ describe("Tests the sum function", () => {
 
     expect(res.statusCode).toBe(400);
     expect(res.body.message).toBe("Invalid input");
+  });
+});
+
+describe("Tests the multiply function", () => {
+  it("should return 6 when 2 * 3", async () => {
+    const res = await request(app).post("/multiply").send({
+      a: 2,
+      b: 3,
+    });
+
+    expect(res.body.answer).toBe(6);
+    expect(res.statusCode).toBe(200);
   });
 });
