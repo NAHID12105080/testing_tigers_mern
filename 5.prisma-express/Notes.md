@@ -75,3 +75,19 @@ export const prismaClient= mockDeep<PrismaClient>()
 ```bash
 npm run test
 ```
+
+## mocking return values
+
+- u can mock the values returned from a `mock` by using `mockResolvedValue`
+- Update `index.test.ts`
+
+```bash
+import {prismaClient} from '../__mocks__/db'
+
+prismaClient.sum.create.mockResolvedValue({
+    id:1,
+    a:1,
+    b:1,
+    result:3
+})
+```

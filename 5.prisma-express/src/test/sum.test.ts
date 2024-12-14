@@ -2,7 +2,7 @@ import express from "express";
 import request from "supertest";
 import { describe, expect, it, vi } from "vitest";
 import app from "../index";
-import { prismaClient } from "../db";
+import { prismaClient } from "../__mocks__/db";
 
 // vi.mock("../db", () => {
 //   return {
@@ -20,6 +20,14 @@ vi.mock("../db");
 
 describe("Tests the sum function", () => {
   it("should return 3 when 1 + 2", async () => {
+    prismaClient.request.create.mockResolvedValueOnce({
+      id: 1,
+      a: 1,
+      b: 2,
+      answer: 3,
+      type: "Sum",
+    });
+
     const res = await request(app).post("/sum").send({
       a: 1,
       b: 2,
