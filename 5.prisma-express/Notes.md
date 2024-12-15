@@ -91,3 +91,26 @@ prismaClient.sum.create.mockResolvedValue({
     result:3
 })
 ```
+
+## Spys v/s Mocks
+
+- `mocks` let you `mock` the functionality of a function call
+- spies let u spy on function calls
+- Till now, we have mocked out the db call,
+- even if wrong inputs are passed to `prismaClient.user.create` function, tests would still pass
+
+## problem
+
+try flipping the a and b inputs
+
+```typescript
+const response = await prismaClient.sum.create({
+  data: {
+    a: parsedResponse.data.b,
+    b: parsedResponse.data.a,
+    result: answer,
+  },
+});
+```
+
+> run `npm run test` ,will seee they still works fine
